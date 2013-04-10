@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Cuiteur | Moyen techniques</title>
+	<link rel="icon" href="../images/favicon.ico"/>
+	<link rel="stylesheet" href="../styles/reset.css" type="text/css">
+	<link rel="stylesheet" href="../styles/moyens.css" type="text/css">
+	<script src="../js/jquery.js"></script>
+	<script src="../js/moyens.js"></script>
+</head>
+<body>
+<header>
+	<table width="100%" border="1">
+		<tr>
+			<td width="75%"><h1>Les moyens techniques de cuiteur</h1></td>
+			<td width="15%"><p><a onclick="history.back();">retour </a></p></td>
+		</tr>
+	</table>
+</header>
+<section>
+	<table width="100%" border="" class="enum_with center" id="datacenter">
+		<tr>
+			<td><a id="dUS"></a>
+				<br/>
+				<img src="../images/photos/serveur3_grande.jpg" width="650" height="831">
+
+				<h2>Data
+					Center Etats-Unis</td>
+		</tr>
+		<tr>
+			<td><a id="dCH"></a>
+				<br/>
+				<img src="../images/photos/serveur4_grande.jpg" width="611" height="793">
+
+				<h2>Data
+					Center Asie</td>
+		</tr>
+		<tr>
+			<td><a id="dEU"></a>
+				<br/>
+				<img src="../images/photos/serveur2_grande.jpg" width="650" height="481">
+
+				<h2>Data
+					Center Europe</td>
+		</tr>
+		<tr>
+			<td><a id="servermail"></a>
+				<br/>
+				<img src="../images/photos/mail_grande.jpg" width="650" height="460">
+
+				<h2>Serveur
+					de mail</td>
+		</tr>
+		<tr>
+			<td><a id="req"></a>
+				<br/>
+				<img src="../images/photos/bd1_grande.jpg" width="650" height="821">
+
+				<h2>
+					Requ&ecirc;te
+					multicrit&eacute;res</td>
+		</tr>
+		<tr>
+			<td><a id="tri"></a>
+				<br/>
+				<img src="../images/photos/bd2_grande.jpg" width="650" height="814">
+
+				<h2>
+					Tri
+					de donn&eacute;es</td>
+		</tr>
+	</table>
+</section>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('header').hide(0).delay(400).fadeIn(1200);
+		var hash = window.location.hash.substring(1);
+		;
+		if (hash) {
+			scrollToAnchor(hash);
+		}
+	})
+</script>
+</body>
+</html>

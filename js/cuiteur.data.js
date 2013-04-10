@@ -1,0 +1,4 @@
+// ...
+var cuitdata = new Object();
+//TODO format & UPDATE
+cuitdata.cuithtml = "    <li> <img class=\"imgUser\" src=\"\" width=\"50\" height=\"50\"> <a title=\"Voir la bio\" class=\"userlink\" href=\"\">\n      <p><strong class=\"userName\"></strong></p>\n      </a> <span class=\"textcuit\">\n      <p></p>\n      </span> <span class=\"textend\">\n      <table width=\"100%\" border=\"\">\n        <tr>\n          <td width=\"50%\" class=\"timecuit\"><time class=\"timeago\" datetime=\"2013-01-31T18:10:50\">about 8 hours ago</time></td>\n          <td width=\"50%\" class=\"recuitbtn\"><p><a href=\"../index.htm\" class=\"recuit\">Recuiter</a>&nbsp;&nbsp;<a href=\"../index.htm\" class=\"repondre\">Repondre</a></p></td>\n        </tr>\n      </table>\n      </span> </li>"

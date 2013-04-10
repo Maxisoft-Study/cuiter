@@ -1,0 +1,85 @@
+body {
+	margin: auto;
+	background: #20190f url(../images/fond.jpg) repeat-y scroll center;
+	color: #e8dbb1;
+	font-family: Verdana, Geneva, Sans-Serif;
+	width: 800px;
+	display: block;
+	font-size: 16px;
+}
+
+strong {
+	font-weight: bolder;
+}
+
+h1 {
+	font-size: 32px;
+	font-weight: bold;
+	text-align: left;
+	line-height: normal;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	margin-top: 26px;
+	margin-bottom: 26px;
+	margin-left: 0px;
+}
+
+h2 {
+	font-size: 26px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 22px;
+	margin-right: 22px;
+	margin-bottom: 22px;
+	margin-left: 0px;
+}
+
+a {
+	color: #3c96f1;
+	font-style: inherit;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: inherit;
+}
+
+a:hover {
+	color: #3c96f1;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+p {
+	padding-left: 32px;
+	padding-right: 32px;
+	line-height: normal;
+	font-size: 16px;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+
+header {
+	position: fixed;
+	top: 0px;
+	z-index: 100000;
+	width: 100%;
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.75);
+
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	right: 0px;
+	/* [disabled]visibility: hidden; */
+}
+
+section {
+	position: relative;
+	top: 100px;
+}
+
+section td {
+	padding: 30px;
+}
+
+.center {
+	text-align: center;
+}

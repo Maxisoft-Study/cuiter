@@ -1,0 +1,167 @@
+body {
+	margin: 0 auto;
+	background: #20190f url(../images/fond.jpg) repeat-y scroll center;
+	color: #e8dbb1;
+	font: 16px/1.6 Verdana, Geneva, Sans-Serif;
+	width: 800px;
+	display: block;
+
+}
+
+strong {
+	font-weight: bolder;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: bold;
+	text-align: left;
+	text-transform: capitalize;
+	line-height: normal;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	margin-top: 26px;
+	margin-right: 26px;
+	margin-bottom: 26px;
+	margin-left: 0px;
+}
+
+h2 {
+	font-size: 26px;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 22px;
+	margin-right: 22px;
+	margin-bottom: 22px;
+	margin-left: 0px;
+}
+
+h3 {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin-top: 18px;
+	margin-right: 18px;
+	margin-bottom: 18px;
+	margin-left: 0px;
+}
+
+a {
+	color: #3c96f1;
+	font-style: inherit;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: inherit;
+}
+
+a:hover {
+	color: #3c96f1;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+td {
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+p {
+	font-size: 16px;
+	margin: 16px 32px;
+
+}
+
+.center {
+	text-align: center;
+}
+
+.imgro {
+	position: relative;
+	overflow: hidden;
+	float: right;
+	right: -60px;
+	top: 35px;
+}
+
+.imglo {
+	position: relative;
+	overflow: hidden;
+	float: left;
+	left: -60px;
+}
+
+.after_imgo {
+	clear: both;
+}
+
+.rimg {
+	width: 450px;
+}
+
+.floatleft {
+	float: left;
+	margin-top: 20px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	margin-left: 5px;
+}
+
+.floatrigth {
+	float: right;
+	margin-top: 20px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	margin-left: 5px;
+}
+
+#culter_cimg {
+	position: absolute;
+	top: 224px;
+	left: 139px;
+	margin-top: 0px;
+	margin-left: 0px;
+	text-align: center;
+}
+
+#join {
+	color: #ef9c3b;
+	text-align: center;
+	width: 700px;
+	font-weight: bold;
+}
+
+#imgrect {
+	position: relative;
+}
+
+#keyboard_td {
+	background: rgb(0, 0, 0);
+	background: rgba(0, 0, 0, 0.72);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	background: rgba(0, 0, 0, 0.70);
+	text-align: center;
+	background-repeat: repeat;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+footer {
+	font-size: 14px;
+	text-align: right;
+}
+
+#endtable {
+	display: inherit;
+	float: right;
+	margin-top: 70px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	margin-left: 50px;
+}
+
+#about {
+	vertical-align: bottom;
+	padding-bottom: 10px;
+	font: 14px/1.4 Verdana, Geneva, Sans-Serif;
+}
