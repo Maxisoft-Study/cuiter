@@ -1,4 +1,7 @@
 <?php
-require_once "session.php";
-md_verifie_session();
+/**
+ * DEBUG
+ */
+require_once "session.class.php";
+$sess = new \cuiteur\Session();
 exit(json_encode($_SESSION));

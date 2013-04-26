@@ -1,8 +1,8 @@
 /* ---------------------------------------------------------------
 			RE-INITIALISATION DES TAGS HTML
-	Pour �viter les valeurs par d�faut diff�rentes suivant les 
-	navigateurs. Seuls les tags le plus	souvent utilis�s et non 
-	d�pr�ci�s sont pris en compte.
+	Pour ?viter les valeurs par d?faut diff?rentes suivant les 
+	navigateurs. Seuls les tags le plus	souvent utilis?s et non 
+	d?pr?ci?s sont pris en compte.
 	Reset complet : http://meyerweb.com/eric/tools/css/reset/
 --------------------------------------------------------------- */
 html, body, div, span, applet, iframe,
@@ -33,25 +33,14 @@ table {
 	border-spacing: 0;
 }
 
-/* ---------------------------------------------------------------
-	FEUILLE DE STYLE ORIGINALE	
---------------------------------------------------------------- */
-html {
-	height: 100%
-}
 
 body {
-	background: #20190f;
-	color: #e8dbb1;
-	font: 14px Verdana, Geneva, Sans-Serif;
-	height: 100%;
-}
-
-#bcPage {
-	background: url(../images/fond.jpg);
-	height: 100%;
 	margin: 0 auto;
+	color: #e8dbb1;
+	font: 16px/1.6 Verdana, Geneva, Sans-Serif;
 	width: 800px;
+	display: block;
+	background: #20190f url(../images/fond.jpg) repeat-y center top;
 }
 
 /* ---------------------------------------------------------------
@@ -59,6 +48,40 @@ body {
 --------------------------------------------------------------- */
 #bcEntete {
 	background: url(../images/entete.jpg) no-repeat;
+	height: 271px;
+	position: relative;
+}
+#bcEntetebcBas{
+	position: relative;
+	top: 172px;
+	padding-right: 10px;
+}
+#bcEntetebcBas .traitsep {
+	float: right;
+}
+#bcEntetebcBas p{
+	clear: both;
+	width: 600px;
+	position: relative;
+	margin-left: 240px;
+	margin-top: 20px;
+	line-height: 15px;
+}
+
+#bcEntetebcBas h1 {
+	text-align: right;
+	font-size: 25px;
+	color: #F93;
+	text-transform: capitalize;
+	font-weight: bold;
+	margin-right: 15px;
+	line-height: 25px;
+}
+
+
+
+#bcEnteteDeco {
+	background: url(../images/entete_deconnecte.jpg) no-repeat;
 	height: 271px;
 	position: relative;
 }
@@ -138,6 +161,8 @@ body {
 	width: 470px;
 }
 
+
+
 textarea:focus,
 input:focus {
 	outline: none;
@@ -170,6 +195,18 @@ textarea {
 	position: absolute;
 	top: 90px;
 	width: 52px;
+}
+
+#btnConnexion{
+	background: url(../images/bouton.png) no-repeat;
+	height: 42px;
+	width: 142px;
+	border: none;
+	font-weight: bold;
+}
+
+#btnConnexion:hover {
+	background: url(../images/bouton_over.png) no-repeat;
 }
 
 #btnPieceJointe:hover {
@@ -225,6 +262,56 @@ h3 {
 	margin-left: -60px;
 	margin-top: 5px;
 	width: 50px;
+}
+
+.imgUser {
+	height: 50px;
+	width: 50px;
+}
+
+li.cuitBlabla>img {
+	float: left;
+	margin-left: -60px;
+	margin-top: 5px;
+}
+
+.userName {
+	font-weight: bolder;
+}
+
+span.userFullName{
+	font-size: 14px;
+	color: #efe7de;
+}
+
+.textcuit {
+	font-size: 14px;
+	max-height: 300px;
+	overflow: hidden;
+	max-width: 480px;
+}
+.textend p ,time{
+	font-size: 10px;
+	color: #efe7de;
+}
+.recuitbtn {
+	text-align: right;
+}
+
+a.recuit {
+	opacity: 0.6;
+}
+
+a.repondre {
+	opacity: 0.6;
+}
+
+a.recuit:hover {
+	opacity: 1;
+}
+
+a.repondre:hover {
+	opacity: 1;
 }
 
 .finMessage a {
@@ -287,4 +374,15 @@ strong {
 #bcPied a:hover {
 	opacity: 1;
 	filter: alpha(opacity=100);
+}
+
+
+
+/* ---------------------------------------------------------------
+	POST FORM
+--------------------------------------------------------------- */
+
+#post tr > td{
+	text-align: right;
+	vertical-align: middle;
 }

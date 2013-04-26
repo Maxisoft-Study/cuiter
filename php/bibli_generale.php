@@ -100,12 +100,19 @@
 	}
 
 /**
- *
- * @param $array
+ * Arrete le script en cours en affichant du le json correspondant a l'array
+ * @param array $array l'array qui sera affiché
  */
 function exit_json($array){
     ob_end_clean();
     header('Cache-Control: no-cache, must-revalidate');
     header('Content-type: application/json');
     exit(json_encode($array));
+}
+
+/**
+ *
+ */
+function javascript_set_global($varname, $value){
+    return "<script type=\"text/javascript\">this.$varname = $value</script>";
 }

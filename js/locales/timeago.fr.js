@@ -17,7 +17,7 @@
             years: "ans"
         },
         prefixes: {
-            lt: "moins d'un",
+            lt: "moins d'une",
             about: "environ",
             over: "plus de ",
             almost: "presque",

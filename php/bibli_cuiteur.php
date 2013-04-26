@@ -42,14 +42,6 @@ namespace {
 
 
     /**
-     * Fonction d'Initialisation.
-     */
-    function init()
-    {
-        header('Content-Type: text/html; charset=' . ENCODING);
-    }
-
-    /**
      * Affiche le début de la page HTML
      * @param string $title le titre de la page
      * @param string $cssname  nom d'un fichier de feuille de styles
@@ -105,7 +97,7 @@ namespace {
 
     /**
      * Echappe un String .
-     * @param $htmlstr le string a echappé.
+     * @param $htmlstr string le string a echappé.
      * @return string
      */
     function escapehtml($htmlstr)
@@ -157,11 +149,6 @@ namespace {
 }
 
 namespace cuiteur {
-
-    ################ CONSTANTES ################
-
-
-    ############################################
 
 
 //___________________________________________________________________
@@ -240,7 +227,11 @@ namespace cuiteur {
         {
             if (!isset(self::$instance)) {
                 self::$instance = new \mysqli(config\HOST, config\USERNAME, config\PASSWORD, config\DBNAME);
+                if(FIX_SQL_TIME_ZONE){
+                    self::$instance->query('SET time_zone = "'.TIME_ZONE.'"');
+                }
             }
+
             return self::$instance;
         }
 
@@ -293,6 +284,38 @@ namespace cuiteur {
         ##        Permet d'enregistre les requetes                 ####
         ##        ainsi q'une meilleur gestion des erreurs         ####
         ################################################################
+        /**
+         * (PHP 5)<br/>
+         * Performs a query on the database
+         * @link http://php.net/manual/en/mysqli.query.php
+         * @param string $query <p>
+         * The query string.
+         * </p>
+         * <p>
+         * Data inside the query should be properly escaped.
+         * </p>
+         * @param int $resultmode [optional] <p>
+         * Either the constant <b>MYSQLI_USE_RESULT</b> or
+         * <b>MYSQLI_STORE_RESULT</b> depending on the desired
+         * behavior. By default, <b>MYSQLI_STORE_RESULT</b> is used.
+         * </p>
+         * <p>
+         * If you use <b>MYSQLI_USE_RESULT</b> all subsequent calls
+         * will return error Commands out of sync unless you
+         * call <b>mysqli_free_result</b>
+         * </p>
+         * <p>
+         * With <b>MYSQLI_ASYNC</b> (available with mysqlnd), it is
+         * possible to perform query asynchronously.
+         * <b>mysqli_poll</b> is then used to get results from such
+         * queries.
+         * </p>
+         * @throws \Exception|\mysqli_sql_exception
+         * @return \mysqli_result|boolean For successful SELECT, SHOW, DESCRIBE or
+         * EXPLAIN queries <b>mysqli_query</b> will return
+         * a <b>mysqli_result</b> object.For other successful queries <b>mysqli_query</b> will
+         * return true and false on failure.
+         */
         public function query($query, $resultmode = MYSQLI_STORE_RESULT)
         {
             $this->lastreq = $query;
@@ -390,7 +413,7 @@ namespace cuiteur {
 
         /**
          * Retourne le dernier id du dernier element ajouter (insert into).
-         * @return mixed l'id ou 0 si erreur
+         * @return int l'id ou 0 si erreur
          */
         public function getLastInsert_id()
         {
@@ -399,7 +422,7 @@ namespace cuiteur {
 
         #### API
         /**
-         * Enregistre un nouvelle utilisateur
+         * Enregistre un nouvel utilisateur
          * @param array $data l'entre a analyse (POST par defaut)
          * @param bool $check vrai si on verifie le data
          * @return mixed
@@ -419,7 +442,7 @@ namespace cuiteur {
             $date = new \DateTime();
 
 
-            $query = "INSERT INTO `users` (`usNom`, `usMail`, `usPseudo`, `usPasse`, `usDateInscription`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')";
+            $query = "INSERT INTO `users` (`usNom`, `usMail`, `usPseudo`, `usPasse`, `usDateInscription`) VALUES ('%s', '%s', '%s', '%s', '%s')";
             $query = sprintf($query, $iarr['txtNom'], $iarr['txtMail'], $iarr['txtPseudo'], md5($iarr['txtPasse']), $date->format(DATE_SQL_FORMAT));
 
             $this->query($query);
@@ -625,6 +648,12 @@ namespace cuiteur\inscription {
 
 
     }
+
+
+##LANCEE AUTOMATIQUEMENT :
+    spl_autoload_register(function ($class) {
+        include str_replace('cuiteur\\','',strtolower($class) . '.class.php');
+    });
 
 
 }

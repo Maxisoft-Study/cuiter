@@ -1,19 +1,25 @@
 <?php
-//ob_start();
+require_once "session.class.php";
+$sess = new \cuiteur\Session();
+
+if(\cuiteur\Session::est_deja_connecte()){ // alors l'utilisateur est deja connecter
+    header('Location: cuiteur.php'); // on lui dit de s'en aller poliment
+    exit(0);
+}
+
 if (isset($_POST) && isset($_POST['btnValider']) && isset($_POST['txtDate'])) {
     require_once 'bibli_cuiteur.php';
-    require_once "session.php";
     require_once "bibli_generale.php";
 
-    $db = new \cuiteur\MysqlCuit();
+    $db = $sess->getDb();
 
     /**
      * Vérifications de saisie et l'insertion dans la table users.
      * @return array les erreurs (des strings) ou une array vide si aucune erreur.
      */
-    function mdl_new_user()
+    function mdl_new_user($db = null)
     {
-        $db = new \cuiteur\MysqlCuit();
+        $db = ($db) ? $db : new \cuiteur\MysqlCuit();
         $checker = new \cuiteur\inscription\Checker();
 
         if (!$checker->check_All()) {
@@ -27,13 +33,12 @@ if (isset($_POST) && isset($_POST['btnValider']) && isset($_POST['txtDate'])) {
         }
     }
 
-    $errs = mdl_new_user();
+    $errs = mdl_new_user($db);
     if ($errs === null || empty($errs)) { //pas d'erreur
-        check_auth_JSON($_POST['txtPseudo'], $_POST['txtPasse']);
+        $sess->check_auth_JSON($_POST['txtPseudo'], $_POST['txtPasse']);
     } else { //il y a des erreurs
         $errs = array_map(utf8_encode, $errs);
         exit_json($errs);
-        exit();
     }
 }
 ?>
@@ -46,71 +51,61 @@ if (isset($_POST) && isset($_POST['btnValider']) && isset($_POST['txtDate'])) {
     <link rel="icon" href="../images/favicon.ico"/>
     <link rel="stylesheet" href="../styles/cuiteur.css" type="text/css">
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css"/>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script src="../js/jquery.ui.datepicker-fr.js"></script>
+    <script type="text/javascript" src="../js/noty/jquery.noty.js"></script>
+    <script type="text/javascript" src="../js/noty/layouts/top.js"></script>
+    <script type="text/javascript" src="../js/noty/themes/default.js"></script>
 </head>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css"/>
-<script src="../js/jquery.js"></script>
-<script src="../js/jquery-ui.js"></script>
-<script src="../js/jquery.ui.datepicker-fr.js"></script>
-<script type="text/javascript" src="../js/noty/jquery.noty.js"></script>
-<script type="text/javascript" src="../js/noty/layouts/top.js"></script>
-<script type="text/javascript" src="../js/noty/themes/default.js"></script>
 <body>
-<div id="bcPage">
-    <div id="bcEntete">
-    </div>
-    <div id="bcInfos">
-    </div>
+<?php
+include 'header.class.php';
+$header = new cuiteur\header\TitleSUBHeader('Inscription', 'Pour vous inscrire il suffit de :');
+$header();
 
-    <div id=errors style="display:none"></div>
+include "divtemplate/menu_lateral.php";
+?>
 
-    <h1>Inscription utilisateur</h1>
+<div id=errors style="display:none"></div>
 
 
-    <form id=post method="POST" action="../php/inscription.php">
-        <table border="1" cellpadding="4" cellspacing="0">
-            <tr>
-                <td>choisir un pseudo</td>
-                <td><input name="txtPseudo" type="text" maxlength="20"/></td>
-            </tr>
-            <tr>
-                <td>choisir mot de passe</td>
-                <td><input name="txtPasse" type="password" maxlength="20"/></td>
-            </tr>
-            <tr>
-                <td>repeter le mot de passe</td>
-                <td><input name="txtVerif" type="password" maxlength="20"/></td>
-            </tr>
-            <tr>
-                <td>indiquer votre nom</td>
-                <td><input name="txtNom" type="text" maxlength="40"/></td>
-            </tr>
-            <tr>
-                <td>donner votre adresse email</td>
-                <td><input name="txtMail" type="text" maxlength="40"/></td>
-            </tr>
-            <tr>
-                <td>Votre date de naissance</td>
-                <td>
-                    <input type="text" name="txtDate" id="datepicker"/>
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td><input name="btnValider" id="btnValider" type="submit" value="Je m'inscris"></td>
-            </tr>
-        </table>
-    </form>
-    <ul id="bcPied">
-        <li><a href="../../index.html">A propos</a></li>
-        <li><a href="../../index.html">Publicit&eacute;</a></li>
-        <li><a href="../../index.html">Patati</a></li>
-        <li><a href="../../index.html">Aide</a></li>
-        <li><a href="../../index.html">Patata</a></li>
-        <li><a href="../../index.html">Stages</a></li>
-        <li><a href="../../index.html">Emplois</a></li>
-        <li><a href="../../index.html">Confidentialit&eacute;</a></li>
-    </ul>
-</div>
+<form id=post method="POST" action="../php/inscription.php">
+    <table border="1" cellpadding="4" cellspacing="0">
+        <tr>
+            <td>choisir un pseudo</td>
+            <td><input name="txtPseudo" type="text" maxlength="20"/></td>
+        </tr>
+        <tr>
+            <td>choisir mot de passe</td>
+            <td><input name="txtPasse" type="password" maxlength="20"/></td>
+        </tr>
+        <tr>
+            <td>repeter le mot de passe</td>
+            <td><input name="txtVerif" type="password" maxlength="20"/></td>
+        </tr>
+        <tr>
+            <td>indiquer votre nom</td>
+            <td><input name="txtNom" type="text" maxlength="40"/></td>
+        </tr>
+        <tr>
+            <td>donner votre adresse email</td>
+            <td><input name="txtMail" type="text" maxlength="40"/></td>
+        </tr>
+        <tr>
+            <td>Votre date de naissance</td>
+            <td>
+                <input type="text" name="txtDate" id="datepicker"/>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input name="btnValider" id="btnValider" type="submit" value="Je m'inscris"></td>
+        </tr>
+    </table>
+</form>
+<?php include "divtemplate/pied_page.php" ?>
 <script>
     function updateBtnValider() {
         var champnonvide = true;
@@ -186,8 +181,8 @@ if (isset($_POST) && isset($_POST['btnValider']) && isset($_POST['txtDate'])) {
                     showAnim: "drop",
                     dateFormat: "dd/mm/yy",
                     maxDate: 0,
-                    minDate: "-120Y",
-                    yearRange: "-120:+120"
+                    minDate: "-130Y",
+                    yearRange: "-130:+130"
                 });
             $("#datepicker").datepicker("option", $.datepicker.regional["fr"]);
         }
